@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>IoTTestbed</class>
+ <widget class="QMainWindow" name="IoTTestbed">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -23,7 +23,7 @@
       <item>
        <layout class="QVBoxLayout" name="choicesContainer">
         <item>
-         <widget class="QLabel" name="products_label">
+         <widget class="QLabel" name="productsLabel">
           <property name="text">
            <string>Products</string>
           </property>
@@ -33,7 +33,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="products_list">
+         <widget class="QComboBox" name="productsList">
           <item>
            <property name="text">
             <string>S20 WiFi Socket</string>
@@ -47,7 +47,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="brands_label">
+         <widget class="QLabel" name="brandsLabel">
           <property name="text">
            <string>Brands</string>
           </property>
@@ -57,7 +57,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="brands_list">
+         <widget class="QComboBox" name="brandsList">
           <item>
            <property name="text">
             <string>Wiwo</string>
@@ -84,14 +84,14 @@
     <item>
      <layout class="QVBoxLayout" name="rightColumnLayout">
       <item>
-       <widget class="QLabel" name="results_label">
+       <widget class="QLabel" name="resultsLabel">
         <property name="text">
          <string>Test Results</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QTextBrowser" name="results_output"/>
+       <widget class="QTextBrowser" name="resultsOutput"/>
       </item>
       <item>
        <widget class="QPushButton" name="testButton">
@@ -104,7 +104,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
