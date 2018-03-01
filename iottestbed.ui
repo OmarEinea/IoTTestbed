@@ -23,9 +23,22 @@
       <item>
        <layout class="QVBoxLayout" name="choicesContainer">
         <item>
+         <widget class="QLabel" name="categoriesLabel">
+          <property name="text">
+           <string>Category</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QComboBox" name="categoriesCombo"/>
+        </item>
+        <item>
          <widget class="QLabel" name="productsLabel">
           <property name="text">
-           <string>Products</string>
+           <string>Product</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
@@ -33,42 +46,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QComboBox" name="productsList">
-          <item>
-           <property name="text">
-            <string>S20 WiFi Socket</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Thermostat</string>
-           </property>
-          </item>
-         </widget>
-        </item>
-        <item>
-         <widget class="QLabel" name="brandsLabel">
-          <property name="text">
-           <string>Brands</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QComboBox" name="brandsList">
-          <item>
-           <property name="text">
-            <string>Wiwo</string>
-           </property>
-          </item>
-          <item>
-           <property name="text">
-            <string>Nest</string>
-           </property>
-          </item>
-         </widget>
+         <widget class="QComboBox" name="productsCombo"/>
         </item>
        </layout>
       </item>
@@ -91,12 +69,12 @@
        </widget>
       </item>
       <item>
-       <widget class="QTextBrowser" name="resultsOutput"/>
+       <widget class="QTextBrowser" name="resultsTextArea"/>
       </item>
       <item>
-       <widget class="QPushButton" name="testButton">
+       <widget class="QPushButton" name="startTestingButton">
         <property name="text">
-         <string>Start Test</string>
+         <string>Start Testing</string>
         </property>
        </widget>
       </item>

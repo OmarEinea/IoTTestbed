@@ -7,14 +7,14 @@ class IoTTestbed(QtWidgets.QMainWindow):
         super().__init__()
         self.ui = Ui_IoTTestbed()
         self.ui.setupUi(self)
-        self.ui.testButton.clicked.connect(self.test_device)
+        self.ui.startTestingButton.clicked.connect(self.testDevice)
         self.ui.exitButton.triggered.connect(self.close)
 
-    def test_device(self):
+    def testDevice(self):
         results = "Testing the security of "
-        results += self.ui.brandsList.currentText() + " "
-        results += self.ui.productsList.currentText() + "..."
-        self.ui.resultsOutput.setText(results)
+        results += self.ui.categoriesCombo.currentText() + " "
+        results += self.ui.productsCombo.currentText() + "..."
+        self.ui.resultsTextArea.setText(results)
 
 
 if __name__ == "__main__":
