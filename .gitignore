@@ -1,0 +1,8 @@
+# Ignore Python and PyCharm cache folders
+__pycache__/
+.idea/
+
+# Ignore PyInstaller build files and folders
+build/
+dist/
+*.spec

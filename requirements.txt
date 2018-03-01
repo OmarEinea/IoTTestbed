@@ -1,0 +1,4 @@
+pyqt5==5.10.1
+pyqt5-tools==5.9.0.1.2
+pyqt5-installer==5.7.0
+pyinstaller==3.4.0dev
