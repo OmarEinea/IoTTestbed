@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets
 from layout import Ui_IoTTestbed
+from execute import Execute
 from data import categories
 
 
@@ -19,8 +20,12 @@ class IoTTestbed(QtWidgets.QMainWindow):
 
     def testDevice(self):
         product = self.ui.productsCombo.currentText()
-        if product:
-            self.ui.resultsTextArea.setText("Testing the security of " + product)
+        if not product: return
+        self.ui.resultsTextArea.clear()
+        self.ui.resultsTextArea.append("Testing the security of " + product + "...\n")
+        self.test = Execute("test.py")
+        self.test.progressed.connect(self.ui.resultsTextArea.append)
+        self.test.start()
 
 
 if __name__ == "__main__":
