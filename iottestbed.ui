@@ -85,7 +85,7 @@
        <widget class="QTextBrowser" name="resultsTextArea"/>
       </item>
       <item>
-       <widget class="QPushButton" name="startTestingButton">
+       <widget class="QPushButton" name="testingButton">
         <property name="enabled">
          <bool>false</bool>
         </property>
