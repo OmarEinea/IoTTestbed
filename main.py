@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from data import categories, scripts
 from layout import Ui_IoTTestbed
 from execute import Execute
-from data import categories
 
 
 class IoTTestbed(QMainWindow, Ui_IoTTestbed):
@@ -10,10 +10,12 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
         self.setupUi(self)
         self.categoriesCombo.addItems(categories)
         self.categoriesCombo.currentTextChanged.connect(self.setProducts)
-        self.productsCombo.setEnabled(False)
         self.productsCombo.currentTextChanged.connect(self.setTests)
-        self.startTestingButton.clicked.connect(self.testDevice)
+        self.startTestingButton.clicked.connect(self.startTesting)
         self.exitButton.triggered.connect(self.close)
+        self.testsListCombo.currentTextChanged.connect(
+            lambda: self.startTestingButton.setEnabled(True)
+        )
 
     def setProducts(self, category):
         self.productsCombo.clear()
@@ -27,19 +29,25 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
     def setTests(self, product):
         self.testsListCombo.clear()
         tests = categories[self.categoriesCombo.currentText()].get(product, False)
+        self.testsListCombo.setEnabled(tests is not None)
+        self.startTestingButton.setEnabled(False)
         if tests:
             self.testsListCombo.addItems(tests)
         elif tests is None:
             self.testsListCombo.addItem("No tests available")
 
-    def testDevice(self):
-        product = self.productsCombo.currentText()
-        if not product: return
+    def startTesting(self):
         self.resultsTextArea.clear()
-        self.resultsTextArea.append("Testing the security of " + product + "...\n")
-        self.test = Execute("test.py")
-        self.test.progressed.connect(self.resultsTextArea.append)
-        self.test.start()
+        test_name = self.testsListCombo.currentItem().text()
+        script_path = scripts.get(test_name)
+        if script_path:
+            product = self.productsCombo.currentText()
+            self.resultsTextArea.append(f'Running "{test_name}" script on {product}...\n')
+            self.test = Execute("test.py")
+            self.test.progressed.connect(self.resultsTextArea.append)
+            self.test.start()
+        else:
+            self.resultsTextArea.append(f'"{test_name}" script is not available yet!')
 
 
 if __name__ == "__main__":
