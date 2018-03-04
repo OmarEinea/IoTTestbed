@@ -13,13 +13,16 @@
   <property name="windowTitle">
    <string>IoT Testbed</string>
   </property>
+  <property name="windowIcon">
+   <iconset>icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="toolTipDuration">
     <number>-1</number>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,5">
     <item>
-     <layout class="QVBoxLayout" name="leftColumnLayout" stretch="1,0,1,0,1,0">
+     <layout class="QVBoxLayout" name="leftColumnLayout" stretch="1,0,1,0,1,0,0">
       <item>
        <widget class="QLabel" name="categoriesLabel">
         <property name="text">
@@ -67,6 +70,13 @@
         </property>
         <property name="selectionMode">
          <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="sponsors">
+        <property name="pixmap">
+         <pixmap>sponsors.png</pixmap>
         </property>
        </widget>
       </item>
