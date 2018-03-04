@@ -39,15 +39,15 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
             return self.stopTesting()
         self.resultsTextArea.clear()
         test_name = self.testsListCombo.currentItem().text()
-        script_path = scripts.get(test_name)
-        if script_path:
+        script_name = scripts.get(test_name)
+        if script_name:
             product = self.productsCombo.currentText()
             self.resultsTextArea.append(f'Running "{test_name}" script on {product}...\n')
             self.process = QProcess()
             self.process.setProcessChannelMode(QProcess.MergedChannels)
             self.process.readyReadStandardOutput.connect(self.appendResults)
             self.process.finished.connect(self.stopTesting)
-            self.process.start("python", ["-u", "tests/test.py"])
+            self.process.start("python", ["-u", "tests/" + script_name])
             self.testingButton.setText("Stop Testing")
             self.testingButton.setStyleSheet("color: red")
         else:

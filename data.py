@@ -1,15 +1,33 @@
 categories = {
     "Choose a category...": {},
-    "Smart sockets": {
-        "Wiwo S20 WiFi socket": ["Nmap Scan", "Sniff Packets", "Switch On/Off"],
-        "Wiwo S25 WiFi socket": None,
-        "Wiwo S31 WiFi socket": None,
+    "Smart Sockets": {
+        "Wiwo S20 WiFi Socket": [
+            "Nmap Scan",
+            "Sniff Packets",
+            "Check Open Ports",
+            "Switch On/Off"
+        ],
+        "TP-Link Smart Plug": None,
+        "D-Link Mydlink Plug W215": None,
+        "Wemo Mini WiFi Plug": None,
+        "Awair Glow Smart Plug": None
     },
     "Thermostats": {
-        "Nest Thermostat E": None,
         "Nest Thermostat 3rd": None,
-        "Nest Thermostat 2rd": None,
-    }
+        "Honeywell Thermostat": None,
+        "Lyric T5 Thermostat": None
+    },
+    "IP Cameras": {
+        "D-link Wireless Camera": None,
+        "August Doorbell Camera": None,
+        "D-Link DCS 5222L Camera": None,
+    },
+    "Smart Speakers": {
+        "Triby Kitchen Speaker": None,
+        "HomePod Smart Speaker": None,
+        "Sonos Play Speaker": None,
+        "Talkies Toy Speaker": None
+    },
 }
 
 scripts = {
