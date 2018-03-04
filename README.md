@@ -18,5 +18,5 @@
 
 - To convert the application into an "exe" executable, use this command (find .exe in dist/ folder): 
     ```bash
-    pyinstaller --clean --onefile -w main.py -n iottestbed
+    pyinstaller --clean -F -w main.py -i iot.ico --add-data="iot.ico;." --add-data="sponsors.png;." -n iottestbed
     ```

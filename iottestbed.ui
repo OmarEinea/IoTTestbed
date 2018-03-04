@@ -13,10 +13,7 @@
   <property name="windowTitle">
    <string>IoT Testbed</string>
   </property>
-  <property name="windowIcon">
-   <iconset>icon.png</iconset>
-  </property>
-  <widget class="QWidget" name="centralwidget">
+  <widget class="QWidget" name="centralWidget">
    <property name="toolTipDuration">
     <number>-1</number>
    </property>
@@ -74,11 +71,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="sponsors">
-        <property name="pixmap">
-         <pixmap>sponsors.png</pixmap>
-        </property>
-       </widget>
+       <widget class="QLabel" name="sponsors"/>
       </item>
      </layout>
     </item>
@@ -108,35 +101,6 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>728</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuAdd">
-    <property name="title">
-     <string>File</string>
-    </property>
-    <addaction name="newTestButton"/>
-    <addaction name="separator"/>
-    <addaction name="exitButton"/>
-   </widget>
-   <addaction name="menuAdd"/>
-  </widget>
-  <action name="newTestButton">
-   <property name="text">
-    <string>New Test</string>
-   </property>
-  </action>
-  <action name="exitButton">
-   <property name="text">
-    <string>Exit</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>

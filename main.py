@@ -1,7 +1,13 @@
 from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QProcess
-from data import categories, scripts
 from layout import Ui_IoTTestbed
+from data import categories, scripts
+import os, sys
+
+
+def image_path(image):
+    return os.path.join(getattr(sys, "_MEIPASS", "."), image)
 
 
 class IoTTestbed(QMainWindow, Ui_IoTTestbed):
@@ -9,12 +15,13 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
         super().__init__()
         self.process = None
         self.setupUi(self)
+        self.setWindowIcon(QIcon(image_path("iot.ico")))
+        self.sponsors.setPixmap(QPixmap(image_path("sponsors.png")))
         self.categoriesCombo.addItems(categories)
         self.categoriesCombo.currentTextChanged.connect(self.setProducts)
         self.productsCombo.currentTextChanged.connect(self.setTests)
         self.testsListCombo.itemSelectionChanged.connect(self.toggleTestingButton)
         self.testingButton.clicked.connect(self.startTesting)
-        self.exitButton.triggered.connect(self.close)
 
     def setProducts(self, category):
         self.productsCombo.clear()
@@ -72,7 +79,6 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
 
 
 if __name__ == "__main__":
-    import sys
     app = QApplication(sys.argv)
     main = IoTTestbed()
     main.show()
