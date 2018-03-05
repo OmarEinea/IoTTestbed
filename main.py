@@ -47,11 +47,13 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
             return self.stopTesting()
         self.resultsTextArea.clear()
         self.reportButton.setEnabled(False)
+        self.resultsLabel.setText(
+            f"Test Results ({self.categoriesCombo.currentText()}: {self.productsCombo.currentText()})"
+        )
         test_name = self.testsListCombo.currentItem().text()
         script_name = scripts.get(test_name)
         if script_name:
-            product = self.productsCombo.currentText()
-            self.resultsTextArea.append(f'Running "{test_name}" script on {product}...\n')
+            self.resultsTextArea.append(f'<b>Running "{test_name}" script</b><br>')
             self.process = QProcess()
             self.process.setProcessChannelMode(QProcess.MergedChannels)
             self.process.readyReadStandardOutput.connect(self.appendResults)
