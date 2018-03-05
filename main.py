@@ -54,7 +54,7 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
             self.process.setProcessChannelMode(QProcess.MergedChannels)
             self.process.readyReadStandardOutput.connect(self.appendResults)
             self.process.finished.connect(self.stopTesting)
-            self.process.start("python", ["-u", "tests/" + script_name])
+            self.process.start("python", ["-u"] + script_name.split())
             self.testingButton.setText("Stop Testing")
             self.testingButton.setStyleSheet("color: red")
         else:

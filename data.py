@@ -5,7 +5,8 @@ categories = {
             "Nmap Scan",
             "Sniff Packets",
             "Check Open Ports",
-            "Switch On/Off"
+            "Switch On",
+            "Switch Off"
         ],
         "TP-Link Smart Plug": None,
         "D-Link Mydlink Plug W215": None,
@@ -18,9 +19,9 @@ categories = {
         "Lyric T5 Thermostat": None
     },
     "IP Cameras": {
-        "D-link Wireless Camera": None,
-        "August Doorbell Camera": None,
+        "D-link Wireless N Camera": None,
         "D-Link DCS 5222L Camera": None,
+        "August Doorbell Camera": None,
     },
     "Smart Speakers": {
         "Triby Kitchen Speaker": None,
@@ -28,8 +29,15 @@ categories = {
         "Sonos Play Speaker": None,
         "Talkies Toy Speaker": None
     },
+    "Health Care": {
+        "Garmin Vivosmart Fitness": None,
+        "Fitbit Surge Fitness Tracker": None,
+        "iHealth Edge Activity Tracker": None,
+        "Sport BP Heart Rate Monitor": None
+    }
 }
 
 scripts = {
-    "Switch On/Off": "test.py"
+    "Switch On": "tests/test.py on",
+    "Switch Off": "tests/test.py off"
 }

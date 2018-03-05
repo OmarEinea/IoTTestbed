@@ -17,7 +17,7 @@
    <property name="toolTipDuration">
     <number>-1</number>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,5">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,9">
     <item>
      <layout class="QVBoxLayout" name="leftColumnLayout" stretch="1,0,1,0,1,0,0">
       <item>
