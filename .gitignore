@@ -6,3 +6,7 @@ __pycache__/
 build/
 dist/
 *.spec
+
+# Ignore compiled layout file and report files
+layout.py
+report*.txt

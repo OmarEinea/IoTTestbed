@@ -88,14 +88,28 @@
        <widget class="QTextBrowser" name="resultsTextArea"/>
       </item>
       <item>
-       <widget class="QPushButton" name="testingButton">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string>Start Testing</string>
-        </property>
-       </widget>
+       <layout class="QHBoxLayout" name="buttonsContainer" stretch="9,1">
+        <item>
+         <widget class="QPushButton" name="testingButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Start Testing</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="reportButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Export Report</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
      </layout>
     </item>

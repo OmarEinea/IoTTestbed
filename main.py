@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import QProcess
 from layout import Ui_IoTTestbed
@@ -22,6 +22,7 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
         self.productsCombo.currentTextChanged.connect(self.setTests)
         self.testsListCombo.itemSelectionChanged.connect(self.toggleTestingButton)
         self.testingButton.clicked.connect(self.startTesting)
+        self.reportButton.clicked.connect(self.exportReport)
 
     def setProducts(self, category):
         self.productsCombo.clear()
@@ -45,6 +46,7 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
         if self.process:
             return self.stopTesting()
         self.resultsTextArea.clear()
+        self.reportButton.setEnabled(False)
         test_name = self.testsListCombo.currentItem().text()
         script_name = scripts.get(test_name)
         if script_name:
@@ -73,9 +75,19 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
         self.testingButton.setStyleSheet("color:" + ["grey", "green"][enabled])
 
     def appendResults(self):
+        self.reportButton.setEnabled(True)
         self.resultsTextArea.append(
             str(self.process.readAllStandardOutput(), encoding="utf-8")
         )
+
+    def exportReport(self):
+        open("report.txt", "w+").write(self.resultsTextArea.toPlainText())
+        QMessageBox(
+            QMessageBox.Information,
+            "Report Exported",
+            "Test results report was exported to report.txt",
+            parent=self
+        ).exec()
 
 
 if __name__ == "__main__":
