@@ -13,6 +13,7 @@ def image_path(image):
 class IoTTestbed(QMainWindow, Ui_IoTTestbed):
     def __init__(self):
         super().__init__()
+        self.tests = []
         self.process = None
         self.setupUi(self)
         self.setWindowIcon(QIcon(image_path("iot.ico")))
@@ -42,33 +43,40 @@ class IoTTestbed(QMainWindow, Ui_IoTTestbed):
         elif tests is None:
             self.testsListCombo.addItem("No tests available")
 
-    def startTesting(self):
+    def startTesting(self, second=False):
         if self.process:
-            return self.stopTesting()
-        self.resultsTextArea.clear()
-        self.reportButton.setEnabled(False)
-        self.resultsLabel.setText(
-            f"Test Results ({self.categoriesCombo.currentText()}: {self.productsCombo.currentText()})"
-        )
-        test_name = self.testsListCombo.currentItem().text()
-        script_name = scripts.get(test_name)
-        if script_name:
-            self.resultsTextArea.append(f'<b>Running "{test_name}" script</b><br>')
-            self.process = QProcess()
-            self.process.setProcessChannelMode(QProcess.MergedChannels)
-            self.process.readyReadStandardOutput.connect(self.appendResults)
-            self.process.finished.connect(self.stopTesting)
-            self.process.start("python", ["-u"] + script_name.split())
-            self.testingButton.setText("Stop Testing")
-            self.testingButton.setStyleSheet("color: red")
-        else:
-            self.resultsTextArea.append(f'"{test_name}" script is not available yet!')
+            return self.stopTesting(force=True)
+        if not second:
+            self.resultsTextArea.clear()
+            self.reportButton.setEnabled(False)
+            self.resultsLabel.setText(
+                f"Test Results ({self.categoriesCombo.currentText()}: {self.productsCombo.currentText()})"
+            )
+            self.tests = [test.text() for test in self.testsListCombo.selectedItems()]
+        for _ in range(len(self.tests)):
+            test_name = self.tests.pop(0)
+            script_name = scripts.get(test_name)
+            if script_name:
+                self.resultsTextArea.append(f'<b>Running "{test_name}" script</b><br>')
+                self.process = QProcess()
+                self.process.setProcessChannelMode(QProcess.MergedChannels)
+                self.process.readyReadStandardOutput.connect(self.appendResults)
+                self.process.finished.connect(self.stopTesting)
+                self.process.start("python", ["-u"] + script_name.split())
+                self.testingButton.setText("Stop Testing")
+                self.testingButton.setStyleSheet("color: red")
+                break
+            else:
+                self.resultsTextArea.append(f'"<b>{test_name}" script is not available yet!</b><br>')
 
-    def stopTesting(self):
+    def stopTesting(self, force=False):
         if self.process:
             self.process = self.process.kill()
-        self.testingButton.setText("Start Testing")
-        self.toggleTestingButton()
+        if force or not self.tests:
+            self.testingButton.setText("Start Testing")
+            self.toggleTestingButton()
+        else:
+            self.startTesting(second=True)
 
     def toggleTestingButton(self):
         if self.process: return
